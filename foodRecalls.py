@@ -1,16 +1,10 @@
 
-# coding: utf-8
-
-# In[2]:
-
 import requests
 import pandas as pd
 import json
 import plotly.plotly as py
 from plotly.graph_objs import *
 
-
-# In[3]:
 
 api_key = 'XXX'
 
@@ -21,8 +15,6 @@ class_three = 'https://api.fda.gov/food/enforcement.json?&search=classification:
 class_total = 'https://api.fda.gov/food/enforcement.json?&count=report_date'
 
 
-# In[4]:
-
 responses = [
     json.loads(requests.get(class_one).text),
     json.loads(requests.get(class_two).text),
@@ -31,8 +23,6 @@ responses = [
 ]
 
 
-
-# In[5]:
 
 columns = ['Class-I', 'Class-II', 'Class-III', 'Total']
 
@@ -43,8 +33,6 @@ for response in responses:
 
 
 
-# In[12]:
-
 final = pd.concat([df for df in data],axis=1).fillna(0)
 final.columns = [columns]
 final.index = final.index.to_datetime()
@@ -53,13 +41,11 @@ final = final.tz_localize('UTC')
 
 #### Make the Plotly Graph
 
-# In[31]:
 
 final = final.ix[-52:,:]
 final.head()
 
 
-# In[41]:
 
 colors = ['#005869','#00856A','#8DB500']
 
