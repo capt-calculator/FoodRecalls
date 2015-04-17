@@ -42,10 +42,6 @@ final = final.tz_localize('UTC')
 #### Make the Plotly Graph
 
 
-final = final.ix[-52:,:]
-final.head()
-
-
 
 colors = ['#005869','#00856A','#8DB500']
 
